@@ -59,24 +59,28 @@ a:hover {
 }
 
 label {
-  padding-right: 10px;
-  min-width: 90px;
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-weight: 500;
-  margin-bottom: 0.7em;
+  margin-bottom: 0.45em;
 }
 
 input {
   font-size: 16px;
-  padding: 0.6em 0.9em;
+  padding: 0.5em 0.8em;
   border: 1px solid #ccc;
   background-color: #fff;
   border-radius: 7px;
-  margin-bottom: 0.7em;
+  margin-bottom: 0.45em;
 }
 
-input[type="number"] {
-  width: 80px;
+/* Make numeric and short inputs wider on desktop for better readability */
+input[type="number"],
+input[type="text"],
+select {
+  width: 140px;
+  min-width: 120px;
 }
 
 .field {
@@ -88,7 +92,7 @@ input[type="number"] {
 .card {
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.13);
   transition: box-shadow 0.2s;
-  padding: 2em 2em 1em 2em;
+  padding: 1.5em 2em;
   border-radius: 12px;
   margin-bottom: 1.2em;
   background: #fff;
@@ -135,7 +139,8 @@ button:disabled {
 }
 
 fieldset {
-  margin-bottom: 0.7em;
+  margin-bottom: 0.5em;
+  padding: 0.6em 0.9em;
 }
 
 .notice {
