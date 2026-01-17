@@ -21,7 +21,7 @@ async function storageTest() {
   <div class="benchmark-card inner-card">
     <form @submit.prevent="storageTest" class="benchmark-form">
       <fieldset>
-        <legend>Storage Benchmark</legend>
+        <legend>I/O DB Benchmark</legend>
         <label>
           Item Count:
           <input type="number" v-model.number="count" min="1" />

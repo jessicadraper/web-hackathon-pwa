@@ -3,7 +3,7 @@
   <div>
     <form @submit.prevent="runBenchmarks" class="benchmark-form">
       <fieldset>
-        <legend>Datenbank-Benchmark</legend>
+        <legend>I/O-DB-Benchmark</legend>
         <label>
           Item Count:
           <input type="number" v-model.number="dbCount" min="1" />
@@ -40,7 +40,7 @@
       <button @click="downloadCSV" class="csv-btn">Export as CSV</button>
       <h3>Benchmark Report</h3>
       <div>
-        <h4>Datenbank-Tests</h4>
+        <h4>I/O-DB-Tests</h4>
         <div v-for="(entry, i) in results.db" :key="i">
           <strong>DB Test Run #{{ entry.run }} (count={{ entry.config.count }}, repeat={{ entry.config.repeat }}):</strong>
           <div>
