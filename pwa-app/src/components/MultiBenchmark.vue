@@ -5,15 +5,15 @@
       <fieldset>
         <legend>Datenbank-Benchmark</legend>
         <label>
-          count:
+          Item Count:
           <input type="number" v-model.number="dbCount" min="1" />
         </label>
         <label>
-          repeat:
+          Value Length:
           <input type="number" v-model.number="dbRepeat" min="1" />
         </label>
         <label>
-          runs:
+          Number of Runs:
           <input type="number" v-model.number="dbRuns" min="1" />
         </label>
       </fieldset>
@@ -24,7 +24,7 @@
           <input type="number" v-model.number="nqueensN" min="1" />
         </label>
         <label>
-          runs:
+          Number of Runs:
           <input type="number" v-model.number="nqueensRuns" min="1" />
         </label>
       </fieldset>
