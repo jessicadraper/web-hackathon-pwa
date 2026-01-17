@@ -22,7 +22,7 @@ export async function writeBenchmark(
   for (let i = 0; i < count; i++) {
     const item: Item = {
       id: i,
-      value: crypto.randomUUID().repeat(repeat),
+      value: 'x'.repeat(repeat),
       timestamp: Date.now(),
     };
     store.put(item);
@@ -50,7 +50,7 @@ export async function runDBBenchmarks() {
   await clearAllItems();
   // Einzelmessung Write
   const writeResult = await measureOperation("IndexedDB Write", () =>
-    writeBenchmark(10000, 1000),
+    writeBenchmark(10000, 1),
   );
   console.log(writeResult);
 
