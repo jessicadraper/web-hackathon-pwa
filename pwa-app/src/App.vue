@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
-import { runHeavyCalculationBenchmark } from './lib/math'
+import CPUTest from "./components/CPUTest.vue";
+import { runHeavyCalculationBenchmark } from "./lib/math";
+import { runNQueensBenchmark } from "./lib/nqueens";
 
-runHeavyCalculationBenchmark()
-
+runHeavyCalculationBenchmark();
+runNQueensBenchmark();
 </script>
 <template>
   <div>
     <h1>Hackathon App</h1>
-    <HelloWorld message="Welcome to Your Vue.js + TypeScript App"/>
+    <h2>CPU Test</h2>
+    <p>Run a CPU-bound function</p>
+    <CPUTest></CPUTest>
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
