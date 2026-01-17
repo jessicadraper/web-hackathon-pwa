@@ -84,7 +84,9 @@ function downloadCSV() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'benchmarks.csv';
+  const now = new Date();
+  const timestamp = now.toISOString().replace('T', '_').replace(/:/g, '-').split('.')[0];
+  a.download = `benchmarks_${timestamp}.csv`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);

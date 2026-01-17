@@ -3,13 +3,13 @@ export function benchmarksToCSV(results: any): string {
   let csv = 'type;run;config;ms\n';
   if (results.db) {
     results.db.forEach((entry: any) => {
-      csv += `db_write;${entry.run};count=${entry.config.count}|repeat=${entry.config.repeat};${entry.result[0]?.executionTimeMs ?? ''}\n`;
-      csv += `db_read;${entry.run};count=${entry.config.count}|repeat=${entry.config.repeat};${entry.result[1]?.executionTimeMs ?? ''}\n`;
+      csv += `db_write;${entry.run};count=${entry.config.count}|repeat=${entry.config.repeat};${entry.writeMs ?? ''}\n`;
+      csv += `db_read;${entry.run};count=${entry.config.count}|repeat=${entry.config.repeat};${entry.readMs ?? ''}\n`;
     });
   }
   if (results.nqueens) {
     results.nqueens.forEach((entry: any) => {
-      csv += `nqueens;${entry.run};n=${entry.n};${entry.result?.executionTimeMs ?? ''}\n`;
+      csv += `nqueens;${entry.run};n=${entry.n};${entry.ms ?? ''}\n`;
     });
   }
   return csv;
