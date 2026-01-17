@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Results from "./Results.vue";
 import type { BenchmarkResult } from "../lib/benchmark";
 import { runNQueensBenchmark } from "../lib/nqueens";
 import { ref } from "vue";
@@ -18,7 +19,7 @@ async function cpuTest() {
     <button @click="cpuTest">Run CPU Test</button>
   </div>
   <div v-if="results">
-    <strong>Execution Time: {{ results.executionTimeMs }}</strong>
+    <Results :results="results"></Results>
   </div>
 </template>
 

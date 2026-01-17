@@ -60,6 +60,5 @@ export async function runDBBenchmarks() {
   );
   console.log(readResult);
 
-  // Mehrfachmessung Write (30 Runs)
-  //const writeRuns = await runMultiple('IndexedDB Write 10k', () => writeBenchmark(10_000), 30)
+  return [writeResult, readResult];
 }
