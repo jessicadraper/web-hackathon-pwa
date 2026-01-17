@@ -139,8 +139,16 @@ button:disabled {
 }
 
 fieldset {
+  border: 1px solid #dbe9fb; /* softer blue-gray */
   margin-bottom: 0.5em;
   padding: 0.6em 0.9em;
+  background: #fbfdff;
+}
+
+legend {
+  color: #125ea8; /* deeper blue for the legend label */
+  font-weight: 600;
+  padding: 0 0.4em;
 }
 
 .notice {
