@@ -1,0 +1,1 @@
+{"name":"Hackathon PWA","short_name":"PWA","description":"A prototype of a PWA mobile app to measure CPU and storage I/O performance","start_url":"/web-hackathon-pwa/","display":"standalone","background_color":"#ffffff","theme_color":"#ffffff","lang":"en","scope":"/web-hackathon-pwa/","icons":[{"src":"pwa.png","sizes":"144x144","type":"image/png"}]}
