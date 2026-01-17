@@ -3,8 +3,8 @@ import CPUTest from "./components/CPUTest.vue";
 import { runHeavyCalculationBenchmark } from "./lib/math";
 import { runNQueensBenchmark } from "./lib/nqueens";
 
-runHeavyCalculationBenchmark();
-runNQueensBenchmark();
+// runHeavyCalculationBenchmark();
+// runNQueensBenchmark();
 </script>
 <template>
   <div>

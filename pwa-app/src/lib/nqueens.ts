@@ -28,8 +28,8 @@ export function solveNQueens(n: number) {
   return solutions;
 }
 
-export async function runNQueensBenchmark() {
-  const result = await measureOperation("N Queens", () => solveNQueens(15));
+export async function runNQueensBenchmark(n: number) {
+  const result = await measureOperation("N Queens", () => solveNQueens(n));
   console.log(result);
   return result;
 }
