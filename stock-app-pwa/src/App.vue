@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue';
+import { runHeavyCalculationBenchmark } from './lib/math'
+
+runHeavyCalculationBenchmark()
+
 </script>
 <template>
   <div>
