@@ -39,7 +39,13 @@ export async function runAllBenchmarks(config: MultiBenchmarkConfig = {
     for (let i = 0; i < config.db.runs; i++) {
       console.log(`DB Benchmark Run ${i+1}: count=${config.db.count}, repeat=${config.db.repeat}`)
       const res = await runDBBenchmarks(config.db.count, config.db.repeat)
-      results.db.push({ run: i+1, config: config.db, result: res })
+      // Nur die Millisekunden speichern
+      results.db.push({
+        run: i+1,
+        config: config.db,
+        writeMs: res[0]?.executionTimeMs ?? null,
+        readMs: res[1]?.executionTimeMs ?? null
+      })
     }
   }
 
@@ -53,17 +59,21 @@ export async function runAllBenchmarks(config: MultiBenchmarkConfig = {
     for (let i = 0; i < config.nqueens.runs; i++) {
       console.log(`N-Queens Benchmark Run ${i+1}: n=${config.nqueens.n}`)
       const nqResult = await runNQueensBenchmark(config.nqueens.n)
-      results.nqueens.push({ run: i+1, n: config.nqueens.n, result: nqResult })
+      results.nqueens.push({
+        run: i+1,
+        n: config.nqueens.n,
+        ms: nqResult?.executionTimeMs ?? null
+      })
     }
   }
 
   // Report
   console.log('--- BENCHMARK REPORT ---')
   results.db.forEach((entry: any) => {
-    console.log(`DB Test Run #${entry.run} (count=${entry.config.count}, repeat=${entry.config.repeat}):`, entry.result)
+    console.log(`DB Test Run #${entry.run} (count=${entry.config.count}, repeat=${entry.config.repeat}): Write: ${entry.writeMs} ms, Read: ${entry.readMs} ms`)
   })
   results.nqueens.forEach((entry: any) => {
-    console.log(`N-Queens Test Run #${entry.run} (n=${entry.n}):`, entry.result)
+    console.log(`N-Queens Test Run #${entry.run} (n=${entry.n}): ${entry.ms} ms`)
   })
 
   return results

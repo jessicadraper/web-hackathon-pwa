@@ -18,22 +18,102 @@ async function storageTest() {
 </script>
 
 <template>
-  <div>
-    <div class="field">
-      <label>Item Count</label>
-      <input type="number" v-model="count" /><br />
+  <div class="benchmark-card inner-card">
+    <form @submit.prevent="storageTest" class="benchmark-form">
+      <fieldset>
+        <legend>Storage Benchmark</legend>
+        <label>
+          Item Count:
+          <input type="number" v-model.number="count" min="1" />
+        </label>
+        <label>
+          Value Length:
+          <input type="number" v-model.number="repeat" min="1" />
+        </label>
+      </fieldset>
+      <button type="submit" :disabled="loading">{{ loading ? 'Running...' : 'Run Storage Test' }}</button>
+    </form>
+    <div v-if="loading" class="notice">
+      <span class="spinner"></span>
+      Benchmark is running, please wait...
     </div>
-    <div class="field">
-      <label>Value Length</label>
-      <input type="number" v-model="repeat" /><br />
+    <div v-if="results && !loading">
+      <div v-for="result in results">
+        <strong>{{ result.label }}</strong>
+        <Results :results="result"></Results>
+      </div>
     </div>
-    <button @click="storageTest">Run Storage Test</button>
-  </div>
-  <div v-if="loading">Running...</div>
-  <div v-if="results" v-for="result in results">
-    <strong>{{ result.label }}</strong>
-    <Results :results="result"></Results>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.benchmark-card {
+  max-width: 600px;
+  margin: 2em auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 2em 2em 1.5em 2em;
+}
+.benchmark-card.inner-card {
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+.benchmark-form fieldset {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+.benchmark-form label {
+  display: inline-block;
+  margin-right: 1.5em;
+  margin-bottom: 0.5em;
+}
+.benchmark-form input[type="number"] {
+  width: 70px;
+  margin-left: 0.5em;
+}
+button {
+  margin-bottom: 1em;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5em 1.2em;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+.notice {
+  display: flex;
+  align-items: center;
+  background: #e3f2fd;
+  color: #1976d2;
+  border-radius: 6px;
+  padding: 1em;
+  margin: 1.5em 0;
+  font-weight: 500;
+  font-size: 1.1em;
+}
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid #90caf9;
+  border-top: 3px solid #1976d2;
+  border-radius: 50%;
+  margin-right: 1em;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
