@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import CPUTest from "./components/CPUTest.vue";
 import { runHeavyCalculationBenchmark } from "./lib/math";
-import { runNQueensBenchmark } from "./lib/nqueens";
+import { runDBBenchmarks } from "./lib/db-benchmarks";
 
-// runHeavyCalculationBenchmark();
-// runNQueensBenchmark();
+runHeavyCalculationBenchmark();
+runDBBenchmarks();
 </script>
 <template>
   <div>
