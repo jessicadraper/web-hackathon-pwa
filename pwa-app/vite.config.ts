@@ -9,10 +9,10 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "apple-touch-icon.png", "masked-icon.svg"],
       manifest: {
-        name: "Hackathon Stock App ",
-        short_name: "StockApp",
+        name: "Hackathon PWA",
+        short_name: "PWA",
         description:
-          "A prototype of a PWA version of a native Android stock mobile application",
+          "A prototype of a PWA mobile app to measure CPU and storage I/O performance",
         theme_color: "#ffffff",
         icons: [
           {
