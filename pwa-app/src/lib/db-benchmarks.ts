@@ -1,9 +1,20 @@
+// Löscht alle Einträge aus dem ObjectStore 'items'
+export async function clearAllItems(): Promise<void> {
+  const db = await getDB();
+  const tx = db.transaction("items", "readwrite");
+  const store = tx.objectStore("items");
+  await store.clear();
+  await tx.done;
+}
 // db-benchmarks.ts
 import { getDB } from "./db";
 import type { Item } from "./db";
-import { measureOperation, runMultiple } from "./benchmark";
+import { measureOperation } from "./benchmark";
 
-export async function writeBenchmark(count: number): Promise<void> {
+export async function writeBenchmark(
+  count: number,
+  repeat: number = 4,
+): Promise<void> {
   const db = await getDB();
   const tx = db.transaction("items", "readwrite");
   const store = tx.objectStore("items");
@@ -11,7 +22,7 @@ export async function writeBenchmark(count: number): Promise<void> {
   for (let i = 0; i < count; i++) {
     const item: Item = {
       id: i,
-      value: crypto.randomUUID().repeat(4),
+      value: crypto.randomUUID().repeat(repeat),
       timestamp: Date.now(),
     };
     store.put(item);
@@ -36,20 +47,18 @@ export async function readBenchmark(): Promise<Item[]> {
 }
 
 export async function runDBBenchmarks() {
+  await clearAllItems();
   // Einzelmessung Write
-  const writeResult = await measureOperation("IndexedDB Write 10k", () =>
-    writeBenchmark(10_000),
+  const writeResult = await measureOperation("IndexedDB Write", () =>
+    writeBenchmark(10000, 1000),
   );
   console.log(writeResult);
 
   // Einzelmessung Read
-  const readResult = await measureOperation("IndexedDB Read 10k", () =>
+  const readResult = await measureOperation("IndexedDB Read", () =>
     readBenchmark(),
   );
   console.log(readResult);
-
-  // Mehrfachmessung Write (30 Runs)
-  //const writeRuns = await runMultiple('IndexedDB Write 10k', () => writeBenchmark(10_000), 30)
 
   return [writeResult, readResult];
 }
