@@ -1,10 +1,10 @@
 <script setup lang="ts">
-defineProps<{ msg: string }>();
+
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-  <p>A real, working Progressive Web App!</p>
+  <div>
+  </div>
 </template>
 
 <style scoped>
