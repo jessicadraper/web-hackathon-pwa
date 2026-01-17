@@ -2,9 +2,16 @@
 import CPUTest from "./components/CPUTest.vue";
 import { runHeavyCalculationBenchmark } from "./lib/math";
 import { runNQueensBenchmark } from "./lib/nqueens";
+import { runDBBenchmarks } from './lib/db-benchmarks'
 
 runHeavyCalculationBenchmark();
 runNQueensBenchmark();
+runDBBenchmarks();
+
+
+
+
+
 </script>
 <template>
   <div>
