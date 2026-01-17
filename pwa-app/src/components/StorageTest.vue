@@ -5,7 +5,7 @@ import { runDBBenchmarks } from "../lib/db-benchmarks";
 import { ref } from "vue";
 
 const count = ref(1000);
-const repeat = ref(1);
+const repeat = ref(1000);
 const results = ref<BenchmarkResult[]>([]);
 const loading = ref(false);
 

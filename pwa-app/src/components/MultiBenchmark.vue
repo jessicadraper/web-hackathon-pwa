@@ -72,10 +72,10 @@ const results = ref<any | null>(null)
 
 // Eingabewerte für die Benchmarks
 const dbCount = ref(1000)
-const dbRepeat = ref(4)
-const dbRuns = ref(1)
-const nqueensN = ref(8)
-const nqueensRuns = ref(1)
+const dbRepeat = ref(1000)
+const dbRuns = ref(100)
+const nqueensN = ref(15)
+const nqueensRuns = ref(100)
 
 function downloadCSV() {
   if (!results.value) return;
